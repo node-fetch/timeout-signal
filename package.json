@@ -2,7 +2,7 @@
 	"name": "timeout-signal",
 	"version": "1.0.0",
 	"description": "Create an AbortSignal that aborts after a delay.",
-	"repository": "https://github.com/Richienb/timeout-signal.git",
+	"repository": "https://github.com/node-fetch/timeout-signal.git",
 	"author": "Richie Bendall <richiebendall@gmail.com>",
 	"license": "MIT",
 	"main": "index.js",

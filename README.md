@@ -1,4 +1,4 @@
-# timeout-signal [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/timeout-signal/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/timeout-signal)
+# timeout-signal [![Travis CI Build Status](https://img.shields.io/travis/com/node-fetch/timeout-signal/master.svg?style=for-the-badge)](https://travis-ci.com/node-fetch/timeout-signal)
 
 Create an AbortSignal that aborts after a delay.
 
