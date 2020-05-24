@@ -1,8 +1,8 @@
 {
-	"name": "the-module",
+	"name": "timeout-signal",
 	"version": "0.0.0",
-	"description": "My awesome module.",
-	"repository": "https://github.com/Richienb/the-module.git",
+	"description": "Create an AbortSignal that aborts after a delay.",
+	"repository": "https://github.com/Richienb/timeout-signal.git",
 	"author": "Richie Bendall <richiebendall@gmail.com>",
 	"license": "MIT",
 	"main": "index.js",
@@ -17,11 +17,18 @@
 		"lint": "xo",
 		"test": "xo && ava"
 	},
-	"keywords": [],
-	"dependencies": {},
+	"keywords": [
+		"timeout",
+		"signal",
+		"abort"
+	],
+	"dependencies": {
+		"abort-controller": "^3.0.0"
+	},
 	"devDependencies": {
 		"ava": "^3.8.1",
 		"eslint-config-richienb": "^0.4.2",
+		"p-event": "^4.1.0",
 		"xo": "^0.30.0"
 	},
 	"resolutions": {

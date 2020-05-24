@@ -1,41 +1,38 @@
-# the-module [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/the-module/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/the-module)
+# timeout-signal [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/timeout-signal/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/timeout-signal)
 
-My awesome module.
+Create an AbortSignal that aborts after a delay.
 
-[![NPM Badge](https://nodei.co/npm/the-module.png)](https://npmjs.com/package/the-module)
+[![NPM Badge](https://nodei.co/npm/timeout-signal.png)](https://npmjs.com/package/timeout-signal)
 
 ## Install
 
 ```sh
-npm install the-module
+npm install timeout-signal
 ```
 
 ## Usage
 
 ```js
-const theModule = require("the-module");
+const timeoutSignal = require("timeout-signal");
+const fetch = require("cross-fetch");
 
-theModule("unicorns");
-//=> 'unicorns & rainbows'
+fetch("https://www.google.com", { signal: timeoutSignal(5000) })
+	.then(response => {
+		// Handle response
+	})
+	.catch(error => {
+		if (error.message === "The user aborted a request.") {
+			// Handle abortion
+		}
+	})
 ```
 
 ## API
 
-### theModule(input, options?)
+### timeoutSignal(timeout)
 
-#### input
+#### timeout
 
-Type: `string`
+Type: `integer`
 
-Lorem ipsum.
-
-#### options
-
-Type: `object`
-
-##### postfix
-
-Type: `string`\
-Default: `rainbows`
-
-Lorem ipsum.
+The milliseconds to wait.

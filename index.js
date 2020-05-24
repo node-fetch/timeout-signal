@@ -1,9 +1,17 @@
 "use strict"
 
-module.exports = (input, { postfix = "rainbows" } = {}) => {
-	if (typeof input !== "string") {
-		throw new TypeError(`Expected a string, got ${typeof input}`)
+const { AbortController } = require("abort-controller")
+
+module.exports = timeout => {
+	if (!Number.isInteger(timeout)) {
+		throw new TypeError(`Expected an integer, got ${typeof timeout}`)
 	}
 
-	return `${input} & ${postfix}`
+	const controller = new AbortController()
+
+	setTimeout(() => {
+		controller.abort()
+	}, timeout)
+
+	return controller.signal
 }

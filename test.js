@@ -1,13 +1,11 @@
 const test = require("ava")
-const theModule = require(".")
+const pEvent = require("p-event")
+const timeoutSignal = require(".")
 
-test("main", t => {
-	t.throws(() => {
-		theModule(123)
-	}, {
-		instanceOf: TypeError,
-		message: "Expected a string, got number"
-	})
+test("main", async t => {
+	const signal = timeoutSignal(0)
 
-	t.is(theModule("unicorns"), "unicorns & rainbows")
+	await pEvent(signal, "abort")
+
+	t.pass()
 })
