@@ -9,15 +9,14 @@ declare const timeoutSignal: {
 	const timeoutSignal = require("timeout-signal");
 	const fetch = require("cross-fetch");
 
-	fetch("https://www.google.com", { signal: timeoutSignal(5000) })
-		.then(response => {
-			// Handle response
-		})
-		.catch(error => {
-			if (error.message === "The user aborted a request.") {
-				// Handle abortion
-			}
-		})
+	try {
+		const response = await fetch("https://www.google.com", { signal: timeoutSignal(5000) })
+		// Handle response
+	} catch (error) {
+		if (error.message === "The user aborted a request.") {
+			// Handle abortion
+		}
+	}
 	```
 	*/
 	(timeout: number): AbortSignal
@@ -32,16 +31,15 @@ declare const timeoutSignal: {
 
 	const signal = timeoutSignal(5000)
 
-	fetch("https://www.google.com", { signal })
-		.then(response => {
-			timeoutSignal.clear(signal)
-			// Handle response
-		})
-		.catch(error => {
-			if (error.message === "The user aborted a request.") {
-				// Handle abortion
-			}
-		})
+	try {
+		const response = await fetch("https://www.google.com", { signal })
+		timeoutSignal.clear(signal)
+		// Handle response
+	} catch (error) {
+		if (error.message === "The user aborted a request.") {
+			// Handle abortion
+		}
+	}
 	```
 	*/
 	clear(signal: AbortSignal): void
