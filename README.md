@@ -36,3 +36,31 @@ fetch("https://www.google.com", { signal: timeoutSignal(5000) })
 Type: `integer`
 
 The milliseconds to wait.
+
+### timeoutSignal.clear(signal)
+
+Clear the timeout associated with a signal.
+
+#### signal
+
+Type: Return value from `timeoutSignal()`
+
+The signal to clear the timeout for.
+
+```js
+const timeoutSignal = require("timeout-signal");
+const fetch = require("cross-fetch");
+
+const signal = timeoutSignal(5000)
+
+fetch("https://www.google.com", { signal })
+	.then(response => {
+		timeoutSignal.clear(signal)
+		// Handle response
+	})
+	.catch(error => {
+		if (error.message === "The user aborted a request.") {
+			// Handle abortion
+		}
+	})
+```

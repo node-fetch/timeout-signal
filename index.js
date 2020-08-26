@@ -2,6 +2,8 @@
 
 const { AbortController } = require("abort-controller")
 
+const signalMap = new WeakMap()
+
 module.exports = timeout => {
 	if (!Number.isInteger(timeout)) {
 		throw new TypeError(`Expected an integer, got ${typeof timeout}`)
@@ -9,9 +11,15 @@ module.exports = timeout => {
 
 	const controller = new AbortController()
 
-	setTimeout(() => {
+	const timeoutId = setTimeout(() => {
 		controller.abort()
 	}, timeout)
 
+	signalMap.set(controller.signal, timeoutId)
+
 	return controller.signal
+}
+
+module.exports.clear = signal => {
+	clearTimeout(signalMap.get(signal))
 }
