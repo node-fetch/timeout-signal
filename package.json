@@ -1,41 +1,35 @@
 {
 	"name": "timeout-signal",
 	"version": "1.1.0",
-	"description": "Create an AbortSignal that aborts after a delay.",
-	"repository": "https://github.com/node-fetch/timeout-signal.git",
-	"author": "Richie Bendall <richiebendall@gmail.com>",
+	"description": "Create an AbortSignal that aborts after a delay",
 	"license": "MIT",
-	"main": "index.js",
+	"repository": "node-fetch/timeout-signal",
+	"author": {
+		"name": "Richie Bendall",
+		"email": "richiebendall@gmail.com"
+	},
+	"type": "module",
+	"exports": "./index.js",
+	"engines": {
+		"node": ">=16"
+	},
+	"scripts": {
+		"test": "xo && ava && tsd"
+	},
 	"files": [
 		"index.js",
 		"index.d.ts"
 	],
-	"engines": {
-		"node": ">=10"
-	},
-	"scripts": {
-		"lint": "xo",
-		"test": "xo && ava"
-	},
 	"keywords": [
 		"timeout",
 		"signal",
 		"abort"
 	],
-	"dependencies": {
-		"abort-controller": "^3.0.0"
-	},
 	"devDependencies": {
-		"ava": "^3.8.1",
-		"delay": "^4.4.0",
-		"eslint-config-richienb": "^0.4.2",
-		"p-event": "^4.1.0",
-		"xo": "^0.30.0"
-	},
-	"resolutions": {
-		"eslint": "^6.8.0"
-	},
-	"xo": {
-		"extends": "richienb"
+		"ava": "^5.0.1",
+		"p-event": "^5.0.1",
+		"time-span": "^5.1.0",
+		"tsd": "^0.24.1",
+		"xo": "^0.52.4"
 	}
 }

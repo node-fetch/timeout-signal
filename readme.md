@@ -1,10 +1,16 @@
-/**
-Create an AbortSignal that aborts after a delay.
+# timeout-signal
 
-@param timeout - The milliseconds to wait.
+> Create an AbortSignal that aborts after a delay
 
-@example
+## Install
+
+```sh
+npm install timeout-signal
 ```
+
+## Usage
+
+```js
 import timeoutSignal from 'timeout-signal';
 
 try {
@@ -16,5 +22,13 @@ try {
 	}
 }
 ```
-*/
-export default function timeoutSignal(timeout: number): AbortSignal;
+
+## API
+
+### timeoutSignal(timeout)
+
+#### timeout
+
+Type: `integer`
+
+The milliseconds to wait.

@@ -1,25 +1,16 @@
-"use strict"
-
-const { AbortController } = require("abort-controller")
-
-const signalMap = new WeakMap()
-
-module.exports = timeout => {
+export default function timeoutSignal(timeout) {
 	if (!Number.isInteger(timeout)) {
-		throw new TypeError(`Expected an integer, got ${typeof timeout}`)
+		throw new TypeError('Expected an integer');
 	}
 
-	const controller = new AbortController()
+	const controller = new AbortController();
 
 	const timeoutId = setTimeout(() => {
-		controller.abort()
-	}, timeout)
+		controller.abort();
+	}, timeout);
 
-	signalMap.set(controller.signal, timeoutId)
+	// Allow Node.js processes to exit early if only the timeout is running
+	timeoutId?.unref?.();
 
-	return controller.signal
-}
-
-module.exports.clear = signal => {
-	clearTimeout(signalMap.get(signal))
+	return controller.signal;
 }
