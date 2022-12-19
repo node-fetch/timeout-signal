@@ -7,8 +7,10 @@ Create an AbortSignal that aborts after a delay.
 ```
 import timeoutSignal from 'timeout-signal';
 
+const signal = timeoutSignal(5000);
+
 try {
-	const response = await fetch('https://www.google.com', {signal: timeoutSignal(5000)});
+	const response = await fetch('https://www.google.com', {signal});
 	// Handle response
 } catch (error) {
 	if (signal.aborted) {
