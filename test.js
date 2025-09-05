@@ -1,4 +1,5 @@
 import test from 'ava';
+import {setTimeout as delay} from 'node:timers/promises';
 import {pEvent} from 'p-event';
 import timeSpan from 'time-span';
 import timeoutSignal from './index.js';
@@ -16,3 +17,18 @@ test('main', async t => {
 	t.true(signal.aborted);
 	t.true(end() < 500);
 });
+
+test('using', async t => {
+	let isAborted = false;
+
+	{
+		using signal = timeoutSignal(300);
+		signal.addEventListener('abort', () => {
+			isAborted = true;
+		})
+		await delay(100);
+	}
+
+	await delay(500);
+	t.false(isAborted);
+})

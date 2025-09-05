@@ -12,5 +12,11 @@ export default function timeoutSignal(timeout) {
 	// Allow Node.js processes to exit early if only the timeout is running
 	timeoutId?.unref?.();
 
-	return controller.signal;
+	const {signal} = controller;
+
+	signal[Symbol.dispose] = () => {
+		clearTimeout(timeoutId);
+	}
+
+	return signal;
 }

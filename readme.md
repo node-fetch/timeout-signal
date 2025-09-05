@@ -25,6 +25,25 @@ try {
 }
 ```
 
+With [`using`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/using#browser_compatibility) syntax for automatic disposal:
+
+```js
+import timeoutSignal from 'timeout-signal';
+
+async function hello() {
+	using signal = timeoutSignal(5000);
+
+	try {
+		const response = await fetch('https://www.google.com', {signal});
+		// Handle response
+	} catch (error) {
+		if (signal.aborted) {
+			// Handle abortion
+		}
+	}
+}
+```
+
 ## API
 
 ### timeoutSignal(timeout)
