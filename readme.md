@@ -2,6 +2,9 @@
 
 > Create an AbortSignal that aborts after a delay
 
+> [!WARNING]
+> Deprecated! Use [`AbortSignal.timeout(ms)`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/timeout_static#browser_compatibility) instead!
+
 ## Install
 
 ```sh
